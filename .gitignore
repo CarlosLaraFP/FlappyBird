@@ -1,0 +1,11 @@
+Library/
+Temp/
+obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+MemoryCaptures/
+.vs/
+
+# /[Aa]ssets/Assets/Store/Tools*
