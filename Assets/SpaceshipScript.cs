@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdScript : MonoBehaviour
+public class SpaceshipScript : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     public float levitationFactor;
@@ -10,9 +10,9 @@ public class BirdScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.name = "Flappy";
+        this.name = "Fringe";
         // TODO: Introduce difficulty by adjusting both of these at runtime
-        rigidBody.gravityScale = 2;
+        rigidBody.gravityScale = 2.5f;
         levitationFactor = 10.0f;
     }
 
