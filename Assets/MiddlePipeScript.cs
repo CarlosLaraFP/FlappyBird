@@ -13,7 +13,7 @@ public class MiddlePipeScript : MonoBehaviour
     {
         // looks for the first game object in the hierarchy with this tag
         gameManager = GameObject
-            .FindGameObjectWithTag("GameManager")
+            .FindGameObjectWithTag(nameof(GameManagerScript))
             .GetComponent<GameManagerScript>();
     }
 
@@ -26,7 +26,10 @@ public class MiddlePipeScript : MonoBehaviour
     // there are additional OnTrigger[] methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameManager.playerScore++;
-        gameManager.scoreText.text = gameManager.playerScore.ToString();
+        if (collision.gameObject.layer == 3)
+        {
+            // TODO: More difficult obstacles yield more points
+            gameManager.IncreaseScore(1);
+        }
     }
 }
