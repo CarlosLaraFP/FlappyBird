@@ -59,7 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/PipeScript.cs" />
+    <Compile Include="Assets/MiddlePipeScript.cs" />
     <Compile Include="Assets/SpaceshipScript.cs" />
+    <Compile Include="Assets/GameManagerScript.cs" />
     <Compile Include="Assets/PipeSpawnerScript.cs" />
   </ItemGroup>
   <ItemGroup>

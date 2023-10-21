@@ -12,8 +12,7 @@ public class PipeSpawnerScript : MonoBehaviour
     private float timer = 0;
 
     // Y coordinate bounds
-    public float minY = -10.0f;
-    public float maxY = 10.0f;
+    public float offsetY = 10.0f;
 
     // Start is called before the first frame update
     private void Start()
@@ -31,21 +30,22 @@ public class PipeSpawnerScript : MonoBehaviour
         }
         else
         {
-            spawnPipes();
+            SpawnPipes();
 
             timer = 0;
         }
     }
 
-    private void spawnPipes()
+    private void SpawnPipes()
     {
+        var position = new Vector3
+        (
+            this.transform.position.x,
+            this.transform.position.y + Random.Range(-offsetY, offsetY),
+            this.transform.position.z
+        );
         // Instantiating prefabs at runtime
-        Instantiate(pipe, getRandomYPosition(this.transform.position), this.transform.rotation);
+        Instantiate(pipe, position, this.transform.rotation);
         // we pass the position and rotation of the object holding the script (the Pipe Spawner)
-    }
-
-    private Vector3 getRandomYPosition(Vector3 position)
-    {
-        return new Vector3(position.x, position.y + Random.Range(minY, maxY), position.z);
     }
 }
