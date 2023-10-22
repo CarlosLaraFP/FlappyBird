@@ -5,6 +5,7 @@ using UnityEngine;
 public class MiddlePipeScript : MonoBehaviour
 {
     public GameManagerScript gameManager;
+    public SpaceshipScript spaceship;
 
     // There are many lifecycle methods in addition to Start() and Update()
 
@@ -15,6 +16,10 @@ public class MiddlePipeScript : MonoBehaviour
         gameManager = GameObject
             .FindGameObjectWithTag(nameof(GameManagerScript))
             .GetComponent<GameManagerScript>();
+
+        spaceship = GameObject
+            .FindGameObjectWithTag(nameof(SpaceshipScript))
+            .GetComponent<SpaceshipScript>();
     }
 
     // Update is called once per frame
@@ -26,7 +31,7 @@ public class MiddlePipeScript : MonoBehaviour
     // there are additional OnTrigger[] methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3 && spaceship.isAlive)
         {
             // TODO: More difficult obstacles yield more points
             gameManager.IncreaseScore(1);

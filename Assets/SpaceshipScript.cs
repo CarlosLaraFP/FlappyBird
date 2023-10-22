@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Rendering.Universal;
 
 public class SpaceshipScript : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class SpaceshipScript : MonoBehaviour
     public bool isAlive = true;
     public GameManagerScript gameManager;
     private SpriteRenderer spriteRenderer;
+    public GameObject spotLight;
 
     // Start is called before the first frame update
     void Start()
     {
         this.name = "Fringe";
+
         // TODO: Introduce difficulty by adjusting physics at runtime
         rigidBody.gravityScale = 2.5f;
 
@@ -31,13 +34,11 @@ public class SpaceshipScript : MonoBehaviour
         {
             rigidBody.velocity = Vector2.up * levitationFactor;
 
-            // Make the sprite glow
-            spriteRenderer.color = Color.blue;
+            spotLight.SetActive(true);
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && isAlive)
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
-            // Remove the glow when the key is released
-            spriteRenderer.color = Color.white;
+            spotLight.SetActive(false);
         }
     }
 
